@@ -24,8 +24,9 @@ Chrome 新版要在 `chrome://extensions` 的 Tampermonkey「詳細資料」裡�
 ## 安裝
 
 1. 在瀏覽器裝好 [Tampermonkey](https://www.tampermonkey.net/) 或其他使用者腳本管理器。
-2. 打開腳本的 raw 網址，管理器會跳出安裝畫面：
-   - https://raw.githubusercontent.com/Nanako0129/shanjie-userscripts/main/threads/shanjie-threads-tab.user.js
+2. 到 Greasy Fork 按「安裝腳本」：
+   - https://greasyfork.org/scripts/604618
+   - 也可以直接開 raw 網址安裝：https://raw.githubusercontent.com/Nanako0129/shanjie-userscripts/main/threads/shanjie-threads-tab.user.js
 
 ## 回報問題
 
@@ -43,4 +44,4 @@ Userscripts that keep web pages from fighting the input method. Written for the 
 
 - **Threads, Tab while composing** (`threads/shanjie-threads-tab.user.js`): in Chromium browsers, a Tab pressed during a composition still reaches the page as `keydown` with `key` "Tab", `keyCode` 229 and `isComposing` true. Threads moves the focus on it, and the browser commits the composition. The script stops that event before the page's handlers see it, and only while composing; Tab outside a composition is untouched. Tested on the Threads composer (Chrome 156, macOS 27, Tampermonkey, Shanjie) and on a page that traps focus the same way (Chrome 157, macOS 26).
 
-Install a userscript manager such as Tampermonkey, then open the raw URL above. In recent Chrome, turn on "Allow User Scripts" in Tampermonkey's details on `chrome://extensions`, or the script does not run. Licensed under MIT.
+Install a userscript manager such as Tampermonkey, then install from Greasy Fork ( https://greasyfork.org/scripts/604618 ) or the raw URL above. In recent Chrome, turn on "Allow User Scripts" in Tampermonkey's details on `chrome://extensions`, or the script does not run. Licensed under MIT.
