@@ -14,7 +14,12 @@
 
 **腳本做的事**：在頁面的程式之前攔下「組字中的 Tab」（`keydown`、`keyup`），不交給頁面；不阻止瀏覽器的預設動作。沒有組字時的 Tab 照常交給頁面，用鍵盤在按鈕之間移動不受影響。
 
-**測過的環境**：Chrome 157、macOS 26，用一個模仿對話框焦點陷阱的測試頁：沒有腳本時焦點跳走、組字送出；有腳本時焦點留在欄位、輸入法照常處理 Tab；沒有組字時的 Tab 照常移焦點。
+**測過的環境**：
+
+- Threads 的發文框：Chrome 156、macOS 27、Tampermonkey、善解輸入法，組字中按 Tab，焦點留在發文框、輸入法照常處理 Tab。
+- 模仿對話框焦點陷阱的測試頁（Chrome 157、macOS 26）：沒有腳本時焦點跳走、組字送出；有腳本時焦點留在欄位；沒有組字時的 Tab 照常移焦點。
+
+Chrome 新版要在 `chrome://extensions` 的 Tampermonkey「詳細資料」裡打開「允許使用者腳本」，腳本才會執行。
 
 ## 安裝
 
@@ -36,6 +41,6 @@
 
 Userscripts that keep web pages from fighting the input method. Written for the [Shanjie Zhuyin IME](https://shanjie.nyanako.com/), but they work with any input method that is composing.
 
-- **Threads, Tab while composing** (`threads/shanjie-threads-tab.user.js`): in Chromium browsers, a Tab pressed during a composition still reaches the page as `keydown` with `key` "Tab", `keyCode` 229 and `isComposing` true. Threads moves the focus on it, and the browser commits the composition. The script stops that event before the page's handlers see it, and only while composing; Tab outside a composition is untouched. Tested in Chrome 157 on macOS 26 with a page that traps focus the same way.
+- **Threads, Tab while composing** (`threads/shanjie-threads-tab.user.js`): in Chromium browsers, a Tab pressed during a composition still reaches the page as `keydown` with `key` "Tab", `keyCode` 229 and `isComposing` true. Threads moves the focus on it, and the browser commits the composition. The script stops that event before the page's handlers see it, and only while composing; Tab outside a composition is untouched. Tested on the Threads composer (Chrome 156, macOS 27, Tampermonkey, Shanjie) and on a page that traps focus the same way (Chrome 157, macOS 26).
 
-Install a userscript manager such as Tampermonkey, then open the raw URL above. Licensed under MIT.
+Install a userscript manager such as Tampermonkey, then open the raw URL above. In recent Chrome, turn on "Allow User Scripts" in Tampermonkey's details on `chrome://extensions`, or the script does not run. Licensed under MIT.
